@@ -9,14 +9,19 @@ import java.util.ArrayList;
  *
  * @author Haikal
  */
-public class Riwayat {
+public class Riwayat extends Pemesanan{
     ArrayList<Pemesanan> listPesanan = new ArrayList<>();
     
-    public void printDetail(){
+    //Pemesanan x : listPesanan
+    public void Detail(){
+        listPesanan.add(this);
         System.out.println("Riwayat pemesanan");
-        for (Pemesanan x : listPesanan){
-            System.out.println("Nama: " + x.getNama());
-            System.out.println("");
+        for (Pemesanan order : listPesanan) {
+            System.out.println(order.getTanggalPemesanan());
+            System.out.println("Nama\t: " + order.getNama());
+            System.out.println("Alamat\t: " + order.getAlamat());
+            System.out.println("No HP\t: " + order.getNoHP());
+            System.out.println();
         }
     }
 }

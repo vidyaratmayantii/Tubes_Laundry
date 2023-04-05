@@ -4,6 +4,7 @@
  */
 package LaundryCLI;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 
@@ -15,7 +16,7 @@ public class Pemesanan {
     private final String nama, alamat, noHP;
     private final double cucian;
     private double hitungBiaya = 0;
-    LocalDateTime tanggalPemesanan, jadwalPengiriman;
+    private LocalDateTime tanggalPemesanan, jadwalPengiriman;
     
     public Pemesanan(){
         Scanner x = new Scanner(System.in);
@@ -42,12 +43,11 @@ public class Pemesanan {
         return cucian;
     }
     
-    
-    
-    public void printDetail(){
-        System.out.println(nama);
-        System.out.println(alamat);
-        System.out.println(noHP);
-        System.out.println(cucian);
+    public String getTanggalPemesanan(){
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy:HH:mm");
+        String currentTime = now.format(formatter);
+        return currentTime;
     }
+    
 }
