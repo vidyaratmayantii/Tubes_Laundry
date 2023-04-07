@@ -9,19 +9,26 @@ import java.util.ArrayList;
  *
  * @author Haikal
  */
-public class Riwayat extends Pemesanan{
+public class Riwayat extends Pemesanan implements Printable{
+    public Riwayat(String nama, String alamat, String noHP, double cucian){
+        super(nama, alamat, noHP, 0);
+    }
+
     ArrayList<Pemesanan> listPesanan = new ArrayList<>();
     
-    //Pemesanan x : listPesanan
-    public void Detail(){
-        listPesanan.add(this);
+    @Override
+    public void printDetails(){
+        //listPesanan.add(this);
+        System.out.println("\n===============================================");
         System.out.println("Riwayat pemesanan");
-        for (Pemesanan order : listPesanan) {
-            System.out.println(order.getTanggalPemesanan());
-            System.out.println("Nama\t: " + order.getNama());
-            System.out.println("Alamat\t: " + order.getAlamat());
-            System.out.println("No HP\t: " + order.getNoHP());
+        for (int i = listPesanan.size() - 1; i >= 0; i--) {
+            System.out.println(listPesanan.get(i).getTime().get(0));
+            System.out.println("Nama Pelanggan\t: " + listPesanan.get(i).getNama());
+            System.out.println("Alamat kirim\t: " + listPesanan.get(i).getAlamat());
+            System.out.println("Nomor Handphone\t: " + listPesanan.get(i).getNoHP());
+            System.out.println("Jadwal Pengiriman\t: " + listPesanan.get(i).jadwalPengiriman(this));
             System.out.println();
         }
+        System.out.println("===============================================\n");
     }
 }

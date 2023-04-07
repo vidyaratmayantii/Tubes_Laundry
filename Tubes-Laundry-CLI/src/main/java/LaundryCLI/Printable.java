@@ -1,18 +1,13 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
  */
-
 package LaundryCLI;
-
 
 /**
  *
  * @author Haikal
  */
-public class Driver {
-
-    public static void main(String[] args) {
-        Menu menu = new Menu();
-        menu.options();
-    }
+public interface Printable {
+    public void printDetails();
 }
