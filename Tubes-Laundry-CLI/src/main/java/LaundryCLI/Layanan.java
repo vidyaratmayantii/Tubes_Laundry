@@ -4,53 +4,62 @@
  */
 package LaundryCLI;
 
+import java.util.Scanner;
+
 /**
  *
  * @author Asus
  */
 public class Layanan {
-    private String pilihanLayanan;
-    private String pilihanWaktu;
+    private int pilihanLayanan;
+    private int pilihanWaktu;
     
-    public Layanan(String pilihanLayanan, String pilihanWaktu){
+    public Layanan(int pilihanLayanan, int pilihanWaktu){
         this.pilihanLayanan = pilihanLayanan;
         this.pilihanWaktu = pilihanWaktu;
     }
     
-    public void setLayanan(String pilihanLayanan){
-        this.pilihanLayanan = pilihanLayanan;
-    }
     
-    public String getLayanan(){
+    public int getLayanan(){
         return this.pilihanLayanan;
     }
     
-    public void setWaktu(String pilihanWaktu){
-       this.pilihanWaktu = pilihanWaktu;
-    }
     
-    public String getWaktu(){
+    public int getWaktu(){
         return this.pilihanWaktu;
     }
     
-    public void printLayanan(){
-        if(null == this.pilihanLayanan){
-            System.out.println("Layanan tidak tersedia");
-        }else switch (this.pilihanLayanan) {
-            case "Kiloan" -> System.out.println("Layanan yang anda pilih adalah kiloan");
-            case "Satuan" -> System.out.println("Layanan yang anda pilih adalah satuan");
-            default -> System.out.println("Layanan tidak tersedia");
-        }
-    }
     
-    public void printWaktu(){
-        if(null == this.pilihanWaktu){
-            System.out.println("Anda belum memilih waktu ");
-        }else switch (this.pilihanWaktu) {
-            case "Kilat" -> System.out.println("Laundry anda akan selesai 3 jam lagi");
-            case "Expres" -> System.out.println("Laundry anda akan selesai 6 jam lagi");
-            case "Regular" -> System.out.println("Laundry anda akan selesai kurang lebih 1 hingga 2 hari lagi");
-            default -> System.out.println("Pilihan tidak tersedia");
+    
+    public void printLayanan(){
+       
+        switch (this.pilihanLayanan) {
+            case 1:
+                System.out.println("Layanan yang anda pilih adalah kiloan");
+                break;
+            case 2:
+                System.out.println("Layanan yang anda pilih adalah satuan");
+                break;
+            default:
+                System.out.println("Opsi yang anda pilih tidak tersedia");
+                break;
+        }
+        
+        if(this.pilihanLayanan == 1 || this.pilihanLayanan ==2){
+            switch (this.pilihanWaktu) {
+            case 1:
+                System.out.println("Laundry anda akan selesai 3 jam lagi");
+                break;
+            case 2:
+                System.out.println("Laundry anda akan selesai 6 jam lagi");
+                break;
+            case 3:
+                System.out.println("Laundry anda akan selesai kurang lebih 1 hingga 2 hari lagi");
+                break;
+            default:
+                System.out.println("Pilihan tidak tersedia");
+                break;
+            }
         }
     }
 }

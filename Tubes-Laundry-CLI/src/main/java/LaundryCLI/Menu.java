@@ -7,14 +7,16 @@ import java.util.Scanner;
 
 public class Menu {
     private String nama, alamat, noHP;
+    private int pilihanWaktu ,pilihanLayanan;
     private double cucian;
     
     public void printMenu(){
         System.out.println("Selamat datang di aplikasi Laundry, Silakan isi detail pelanggan");
-        System.out.println("1. Pesan jasa Laundry");
-        System.out.println("2. Lakukan Transaksi");
-        System.out.println("3. Tampilkan riwayat pemesanan");
-        System.out.println("4. Keluar");
+        System.out.println("1. pilihan layanan laundry");
+        System.out.println("2. Pesan jasa Laundry");
+        System.out.println("3. Lakukan Transaksi");
+        System.out.println("4. Tampilkan riwayat pemesanan");
+        System.out.println("5. Keluar");
         System.out.println("Pilih opsi : ");
 
     }
@@ -23,12 +25,31 @@ public class Menu {
         Riwayat histori = new Riwayat(nama, alamat, noHP, cucian);
         Scanner input = new Scanner(System.in);
         int opsi = 0;
-        while (opsi != 4){
+        while (opsi != 5){
             printMenu();
             opsi = input.nextInt();
             Scanner data = new Scanner(System.in);
             switch (opsi) {
                 case 1:
+                    
+                    System.out.println("Input layanan yang dipilih:");
+                    System.out.println("1.Kiloan");
+                    System.out.println("2.Satuan");
+                    pilihanLayanan = data.nextInt();
+                    if(pilihanLayanan == 1 || pilihanLayanan == 2){
+                        System.out.println("Input layann waktu yang dipilih:");
+                        System.out.println("1.Kilat");
+                        System.out.println("2.Express");
+                        System.out.println("3.Regular");
+                        pilihanWaktu = data.nextInt();
+                    }
+                    Layanan layanan = new Layanan(pilihanLayanan, pilihanWaktu);
+                    layanan.printLayanan();
+                    System.out.println("");
+                    break;
+
+                    
+                case 2:
                     System.out.println("Input nama pelanggan");
                     nama = data.nextLine();
                     System.out.println("Masukan alamat pengiriman");
@@ -40,11 +61,11 @@ public class Menu {
                     Pemesanan order = new Pemesanan(nama, alamat, noHP, cucian);
                     histori.listPesanan.add(order);
                     break;
-                case 2:
-                    break;
                 case 3:
+                    break;
+                case 4:
                     histori.printDetails();
-                case 5:
+                case 6:
                     Pemesanan dummy = new Pemesanan("flxnzz", "New York", "08193048392", 2);
                     Pemesanan dummy2 = new Pemesanan("ourmine", "Indonesia", "4492300139", 4);
                     Pemesanan dummy3 = new Pemesanan("x47", "Bandung", "1320394103", 3);
