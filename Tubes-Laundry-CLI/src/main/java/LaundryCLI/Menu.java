@@ -9,23 +9,23 @@ public class Menu {
     private String nama, alamat, noHP;
     private int pilihanWaktu ,pilihanLayanan;
     private double cucian;
+    private int jumlah;
     
     public void printMenu(){
         System.out.println("Selamat datang di aplikasi Laundry, Silakan isi detail pelanggan");
-        System.out.println("1. pilihan layanan laundry");
-        System.out.println("2. Pesan jasa Laundry");
-        System.out.println("3. Lakukan Transaksi");
-        System.out.println("4. Tampilkan riwayat pemesanan");
-        System.out.println("5. Keluar");
+        System.out.println("1. Pesan jasa Laundry");
+        System.out.println("2. Lakukan Transaksi");
+        System.out.println("3. Tampilkan riwayat pemesanan");
+        System.out.println("4. Keluar");
         System.out.println("Pilih opsi : ");
 
     }
     
     public void options(){
-        Riwayat histori = new Riwayat(nama, alamat, noHP, cucian);
+        Riwayat histori = new Riwayat(pilihanLayanan,pilihanWaktu,nama, alamat, noHP, cucian);
         Scanner input = new Scanner(System.in);
         int opsi = 0;
-        while (opsi != 5){
+        while (opsi != 4){
             printMenu();
             opsi = input.nextInt();
             Scanner data = new Scanner(System.in);
@@ -46,29 +46,36 @@ public class Menu {
                     Layanan layanan = new Layanan(pilihanLayanan, pilihanWaktu);
                     layanan.printLayanan();
                     System.out.println("");
-                    break;
-
-                    
-                case 2:
                     System.out.println("Input nama pelanggan");
                     nama = data.nextLine();
                     System.out.println("Masukan alamat pengiriman");
                     alamat = data.nextLine();
                     System.out.println("Nomor kontak pelanggan");
                     noHP = data.nextLine();
+                    if(pilihanLayanan == 1){
                     System.out.println("Berat cucian pelanggan (kg)");
                     cucian = data.nextDouble();
-                    Pemesanan order = new Pemesanan(nama, alamat, noHP, cucian);
+                    }else if(pilihanLayanan == 2){
+                    System.out.println("Jumlah baju (pcs)");
+                    cucian = data.nextInt();
+                    }
+                    Pemesanan order = new Pemesanan(pilihanLayanan,pilihanWaktu,nama, alamat, noHP, cucian);
                     histori.listPesanan.add(order);
                     break;
-                case 3:
+                case 2:
+                    System.out.println("===Struk Transaksi Laundry===");
+                    Transaksi transaksi = new Transaksi(jumlah,pilihanLayanan,pilihanWaktu,nama,alamat,noHP, cucian);
+                    transaksi.HitungBiaya();
+                    transaksi.printBiaya();
+                    System.out.println("=============================");
+                    System.out.println("");
                     break;
-                case 4:
+                case 3:
                     histori.printDetails();
-                case 6:
-                    Pemesanan dummy = new Pemesanan("flxnzz", "New York", "08193048392", 2);
-                    Pemesanan dummy2 = new Pemesanan("ourmine", "Indonesia", "4492300139", 4);
-                    Pemesanan dummy3 = new Pemesanan("x47", "Bandung", "1320394103", 3);
+                case 5:
+                    Pemesanan dummy = new Pemesanan(1,2,"flxnzz", "New York", "08193048392", 2);
+                    Pemesanan dummy2 = new Pemesanan(1,3,"ourmine", "Indonesia", "4492300139", 4);
+                    Pemesanan dummy3 = new Pemesanan(2,2,"x47", "Bandung", "1320394103", 3);
                     histori.listPesanan.add(dummy);
                     histori.listPesanan.add(dummy2);
                     histori.listPesanan.add(dummy3);

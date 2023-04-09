@@ -14,7 +14,7 @@ import java.util.Scanner;
  *
  * @author Haikal
  */
-public class Pemesanan implements Printable{
+public class Pemesanan extends Layanan implements Printable{
 
     private final String nama;
     private final String alamat;
@@ -26,7 +26,8 @@ public class Pemesanan implements Printable{
     private ArrayList<String> time = new ArrayList<>();
     private LocalDateTime now = LocalDateTime.now();
     
-    public Pemesanan(String nama, String alamat, String noHP, double cucian) {
+    public Pemesanan(int pilihanLayanan, int pilihanWaktu,String nama, String alamat, String noHP, double cucian) {
+        super(pilihanLayanan, pilihanWaktu);
         this.nama = nama;
         this.alamat = alamat;
         this.noHP = noHP;
