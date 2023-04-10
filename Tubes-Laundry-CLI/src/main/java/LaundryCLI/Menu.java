@@ -58,10 +58,17 @@ public class Menu {
                     System.out.println("Jumlah baju (pcs)");
                     cucian = data.nextInt();
                     }
-                    Layanan layanan = new Layanan(pilihanLayanan, pilihanWaktu);
-                    layanan.printLayanan();
+                    Layanan layanan= new Layanan(pilihanLayanan, pilihanWaktu);
+                    if(pilihanLayanan == 1){
+                        Layanan layanan_kilo = new Layanan_kiloan(pilihanLayanan, pilihanWaktu);
+                        layanan_kilo.printLayanan();
+                    }else if(pilihanLayanan == 2){
+                        Layanan layanan_pcs = new Layanan_pcsan(pilihanLayanan, pilihanWaktu);
+                        layanan_pcs.printLayanan();
+                    }
                     Pemesanan order = new Pemesanan(pilihanLayanan,pilihanWaktu,nama, alamat, noHP, cucian);
                     histori.listPesanan.add(order);
+                    System.out.println("");
                     break;
                 case 2:
                     System.out.println("===Struk Transaksi Laundry===");
