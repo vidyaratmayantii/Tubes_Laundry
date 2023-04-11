@@ -28,37 +28,20 @@ public class Menu {
         while (opsi != 4){
             printMenu();
             opsi = input.nextInt();
-            Scanner dataLayanan = new Scanner(System.in);
             Scanner data = new Scanner(System.in);
             switch (opsi) {
                 case 1:
-                    
-                    System.out.println("Input layanan yang dipilih:");
-                    System.out.println("1.Kiloan");
-                    System.out.println("2.Satuan");
-                    pilihanLayanan = dataLayanan.nextInt();
-                    if(pilihanLayanan == 1 || pilihanLayanan == 2){
-                        System.out.println("Input layann waktu yang dipilih:");
-                        System.out.println("1.Kilat");
-                        System.out.println("2.Express");
-                        System.out.println("3.Regular");
-                        pilihanWaktu = dataLayanan.nextInt();
-                    }
-                    
+            
                     System.out.println("Input nama pelanggan");
                     nama = data.nextLine();
                     System.out.println("Masukan alamat pengiriman");
                     alamat = data.nextLine();
                     System.out.println("Nomor kontak pelanggan");
                     noHP = data.nextLine();
-                    if(pilihanLayanan == 1){
-                    System.out.println("Berat cucian pelanggan (kg)");
-                    cucian = data.nextDouble();
-                    }else if(pilihanLayanan == 2){
-                    System.out.println("Jumlah baju (pcs)");
-                    cucian = data.nextInt();
-                    }
+
                     Layanan layanan= new Layanan(pilihanLayanan, pilihanWaktu);
+                    layanan.printLayanan();
+                    
                     if(pilihanLayanan == 1){
                         Layanan layanan_kilo = new Layanan_kiloan(pilihanLayanan, pilihanWaktu);
                         layanan_kilo.printLayanan();
@@ -66,13 +49,17 @@ public class Menu {
                         Layanan layanan_pcs = new Layanan_pcsan(pilihanLayanan, pilihanWaktu);
                         layanan_pcs.printLayanan();
                     }
+                    histori.listLayanan.add(layanan);
+                    System.out.println();
                     Pemesanan order = new Pemesanan(pilihanLayanan,pilihanWaktu,nama, alamat, noHP, cucian);
                     histori.listPesanan.add(order);
                     System.out.println("");
+                    
                     break;
                 case 2:
                     System.out.println("===Struk Transaksi Laundry===");
                     Transaksi transaksi = new Transaksi(jumlah,pilihanLayanan,pilihanWaktu,nama,alamat,noHP, cucian);
+                    System.out.println(transaksi.getCucian());
                     transaksi.HitungBiaya();
                     transaksi.printDetails();
                     System.out.println("=============================");
@@ -80,15 +67,7 @@ public class Menu {
                     break;
                 case 3:
                     histori.printDetails();
-                case 5:
-                    Pemesanan dummy = new Pemesanan(1,2,"flxnzz", "New York", "08193048392", 2);
-                    Pemesanan dummy2 = new Pemesanan(1,3,"ourmine", "Indonesia", "4492300139", 4);
-                    Pemesanan dummy3 = new Pemesanan(2,2,"x47", "Bandung", "1320394103", 3);
-                    histori.listPesanan.add(dummy);
-                    histori.listPesanan.add(dummy2);
-                    histori.listPesanan.add(dummy3);
-                    dummy.jadwalPengiriman(histori);
-                    
+                case 4:
                     break;
                 default:
                     System.out.println("Invalid option");

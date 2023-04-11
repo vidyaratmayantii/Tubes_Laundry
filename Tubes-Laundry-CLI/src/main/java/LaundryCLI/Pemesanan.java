@@ -19,7 +19,6 @@ public class Pemesanan extends Layanan implements Printable{
     private final String nama;
     private final String alamat;
     private final String noHP;
-    private final double cucian;
     private double hitungBiaya = 0;
     
     //should be above formatter variable in constructor
@@ -31,7 +30,6 @@ public class Pemesanan extends Layanan implements Printable{
         this.nama = nama;
         this.alamat = alamat;
         this.noHP = noHP;
-        this.cucian = cucian;
         
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEEE, dd MMMM yyyy, HH:mm:ss", Locale.getDefault());
         String currentTime = now.format(formatter);
@@ -50,14 +48,11 @@ public class Pemesanan extends Layanan implements Printable{
     public String getNoHP(){
         return noHP;
     }
-    public double getCucian(){
-        return cucian;
-    }
+
+
     
     @Override
     public void printDetails() {
-        System.out.println("Pelanggan " + nama + " membawa " + cucian + " kg cucian pada tanggal" +
-                time.get(0));
     }
     
     public String jadwalPengiriman(Riwayat histori){
@@ -71,10 +66,10 @@ public class Pemesanan extends Layanan implements Printable{
                 count++;
             }
         }
-        String pengembalianJamSibuk = now.plusDays(3).format(formatter);
-        String pengembalianNormal = now.plusDays(2).format(formatter);
+
+        String pengembalianJamSibuk = now.plusDays(2).format(formatter);
+        String pengembalianNormal = now.plusDays(1).format(formatter);
         String hasil = (count > 5) ? pengembalianJamSibuk : pengembalianNormal;
-        //System.out.println(count);
         return hasil;
     }
 }

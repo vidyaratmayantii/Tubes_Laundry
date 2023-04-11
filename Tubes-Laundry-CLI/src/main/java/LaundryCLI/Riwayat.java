@@ -15,6 +15,7 @@ public class Riwayat extends Pemesanan implements Printable{
     }
 
     ArrayList<Pemesanan> listPesanan = new ArrayList<>();
+     ArrayList<Layanan> listLayanan = new ArrayList<>();
     
     @Override
     public void printDetails(){
@@ -26,7 +27,8 @@ public class Riwayat extends Pemesanan implements Printable{
             System.out.println("Nama Pelanggan\t: " + listPesanan.get(i).getNama());
             System.out.println("Alamat kirim\t: " + listPesanan.get(i).getAlamat());
             System.out.println("Nomor Handphone\t: " + listPesanan.get(i).getNoHP());
-            System.out.println("Jumlah cucian/total cucian\t: " + listPesanan.get(i).getCucian());
+            System.out.println("Jumlah cucian/total cucian\t: " + listLayanan.get(i).getCucian());
+            System.out.println("Jenis Layanan\t: " + listLayanan.get(i).waktu + " " + listLayanan.get(i).layanan);
             System.out.println("Jadwal Pengiriman\t: " + listPesanan.get(i).jadwalPengiriman(this));
             System.out.println();
         }
