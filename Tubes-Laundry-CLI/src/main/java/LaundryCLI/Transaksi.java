@@ -33,7 +33,8 @@ public class Transaksi extends Pemesanan implements Printable{
         }
     }
     
-    public void printBiaya(){
+    @Override
+    public void printDetails(){
         System.out.println("Nama Pelanggan : "+ super.getNama());
         System.out.println("Alamat Pelanggan: "+ super.getAlamat());
         System.out.println("No HP Pelanggan: "+ super.getNoHP());

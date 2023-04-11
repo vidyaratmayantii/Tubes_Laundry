@@ -74,7 +74,7 @@ public class Menu {
                     System.out.println("===Struk Transaksi Laundry===");
                     Transaksi transaksi = new Transaksi(jumlah,pilihanLayanan,pilihanWaktu,nama,alamat,noHP, cucian);
                     transaksi.HitungBiaya();
-                    transaksi.printBiaya();
+                    transaksi.printDetails();
                     System.out.println("=============================");
                     System.out.println("");
                     break;
