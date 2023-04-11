@@ -8,7 +8,7 @@ package LaundryCLI;
  *
  * @author Haikal
  */
-public class Transaksi extends Pemesanan {
+public class Transaksi extends Pemesanan implements Printable{
     
     private int jumlah;
     
@@ -19,21 +19,17 @@ public class Transaksi extends Pemesanan {
     
     public void HitungBiaya(){
         if(super.getLayanan() == 1){
-            if(super.getWaktu() == 1){
-            jumlah = (int) (super.getCucian()*12000);
-            }else if(super.getWaktu() == 2){
-            jumlah = (int) (super.getCucian()*10000);
-            }else{
-            jumlah = (int) (super.getCucian()*6000);
-            }
+            jumlah = (int) (switch (super.getWaktu()) {
+                case 1 -> super.getCucian()*12000;
+                case 2 -> super.getCucian()*10000;
+                default -> super.getCucian()*6000;
+            });
         }else if(super.getLayanan() == 2){
-            if(super.getWaktu() == 1){
-            jumlah = (int) (super.getCucian()*8000);
-            }else if(super.getWaktu() == 2){
-            jumlah = (int) (super.getCucian()*7000);
-            }else{
-            jumlah = (int) (super.getCucian()*6000);
-            }
+            jumlah = (int) (switch (super.getWaktu()) {
+                case 1 -> super.getCucian()*8000;
+                case 2 -> super.getCucian()*7000;
+                default -> super.getCucian()*6000;
+            });
         }
     }
     
