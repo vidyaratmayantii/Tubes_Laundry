@@ -10,8 +10,8 @@ package LaundryCLI;
  */
 public class Layanan_pcsan extends Layanan {
     
-    public Layanan_pcsan(int pilihanLayanan, int pilihanWaktu) {
-        super(pilihanLayanan, pilihanWaktu);
+    public Layanan_pcsan(int pilihanLayanan, int pilihanWaktu,double cucian) {
+        super(pilihanLayanan, pilihanWaktu, cucian);
     }
     
     @Override

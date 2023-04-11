@@ -19,14 +19,15 @@ public class Pemesanan extends Layanan implements Printable{
     private final String nama;
     private final String alamat;
     private final String noHP;
-    private double hitungBiaya = 0;
+    private double cucian;
+    
     
     //should be above formatter variable in constructor
     private ArrayList<String> time = new ArrayList<>();
     private LocalDateTime now = LocalDateTime.now();
     
-    public Pemesanan(int pilihanLayanan, int pilihanWaktu,String nama, String alamat, String noHP, double cucian) {
-        super(pilihanLayanan, pilihanWaktu);
+    public Pemesanan(int pilihanLayanan, int pilihanWaktu,double cucian,String nama, String alamat, String noHP) {
+        super(pilihanLayanan, pilihanWaktu,cucian);
         this.nama = nama;
         this.alamat = alamat;
         this.noHP = noHP;
@@ -48,7 +49,6 @@ public class Pemesanan extends Layanan implements Printable{
     public String getNoHP(){
         return noHP;
     }
-
 
     
     @Override

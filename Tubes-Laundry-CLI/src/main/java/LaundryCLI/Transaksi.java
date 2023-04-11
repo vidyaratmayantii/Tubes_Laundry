@@ -12,8 +12,8 @@ public class Transaksi extends Pemesanan implements Printable{
     
     private int jumlah;
     
-    public Transaksi(int jumlah,int pilihanLayanan, int pilihanWaktu, String nama, String alamat, String noHP, double cucian) {
-        super(pilihanLayanan, pilihanWaktu, nama, alamat, noHP, cucian);
+    public Transaksi(int jumlah,int pilihanLayanan , int pilihanWaktu,double cucian,String nama, String alamat, String noHP) {
+        super(pilihanLayanan,pilihanWaktu, cucian, nama, alamat,noHP );
         this.jumlah = jumlah;
     }
     
@@ -35,10 +35,32 @@ public class Transaksi extends Pemesanan implements Printable{
     
     @Override
     public void printDetails(){
-        System.out.println("Nama Pelanggan : "+ super.getNama());
-        System.out.println("Alamat Pelanggan: "+ super.getAlamat());
-        System.out.println("No HP Pelanggan: "+ super.getNoHP());
-        System.out.println("Jumlah cucian/ Total berat cucian: "+super.getCucian());
+        System.out.println("Nama Pelanggan\t: " + getNama());
+        System.out.println("Alamat kirim\t: " + getAlamat());
+        System.out.println("Nomor Handphone\t: " + getNoHP());
+        System.out.println("Jumlah cucian/total cucian\t: " + getCucian());
+        switch (super.getLayanan()) {
+            case 1:
+                if(super.getWaktu() == 1){
+                    System.out.println("Jenis Layanan: Kilat Kiloan");
+                }else if(super.getLayanan()== 2){
+                    System.out.println("Jenis Layanan: Express Kiloan");
+                }else{
+                    System.out.println("Jenis Layanan: Regular Kiloan");
+                }   break;
+            case 2:
+                if(super.getWaktu() == 1){
+                    System.out.println("Jenis Layanan: Kilat Satuan");
+                }else if(super.getLayanan()== 2){
+                    System.out.println("Jenis Layanan: Express Satuan");
+                }else{
+                    System.out.println("Jenis Layanan: Regular Satuan");
+                }   break;
+            default:
+                System.out.println("Piliahan jasa tidak ada");
+                break;
+        }
+        System.out.println("Jumlah cucian/ Total berat cucian: "+ super.getCucian());
         System.out.println("Total biaya: "+ jumlah);
         
     }
